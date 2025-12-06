@@ -1,9 +1,10 @@
 # Comparator Class
 
 The `Comparator` class is a utility to compare two values of type `T`.  
-It provides methods to check equality, ordering, and reverse comparisons.  
+It provides methods to check equality, ordering, and reverse comparisons.
 
 **Type parameter:**
+
 - `T` - The type of values to compare (restricted to `string` or `number`).
 
 ---
@@ -14,8 +15,9 @@ It provides methods to check equality, ordering, and reverse comparisons.
 constructor(compareFunction?: (a: T, b: T) => number)
 ```
 
-Creates a new `Comparator` instance.  
-- **compareFunction (optional)**: A custom function to compare two values of type `T`.  
+Creates a new `Comparator` instance.
+
+- **compareFunction (optional)**: A custom function to compare two values of type `T`.
   - Should return:
     - `0` if the values are equal
     - `-1` if `a < b`
@@ -96,11 +98,13 @@ Checks if the first value is greater than or equal to the second value.
 
 Reverses the comparison order of the comparator.  
 After calling this method:
+
 - `lessThan` behaves like `greaterThan`
 - `greaterThan` behaves like `lessThan`
 
 ---
 
-**Usage Notes**  
+**Usage Notes**
+
 - Can be used in sorting algorithms to compare numbers or strings.
 - Supports custom comparison functions to handle objects or complex sorting logic.

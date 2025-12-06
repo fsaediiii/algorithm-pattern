@@ -7,7 +7,7 @@
  */
 
 export default class Comparator<T extends string | number> {
-  private compare: (a: T, b: T) => number;
+  private compare: (_a: T, _b: T) => number;
 
   /**
    * Creates a new Comparator instance.
@@ -15,7 +15,7 @@ export default class Comparator<T extends string | number> {
    * @param {function(a: T, b: T): number} [compareFunction] - Optional custom compare function.
    * If not provided, a default compare function is used (works for numbers and strings).
    */
-  constructor(compareFunction?: (a: T, b: T) => number) {
+  constructor(compareFunction?: (_a: T, _b: T) => number) {
     this.compare = compareFunction || this.defaultCompare;
   }
 
@@ -27,69 +27,69 @@ export default class Comparator<T extends string | number> {
    *  - -1 if the first value is less than the second
    *  - 1 if the first value is greater than the second
    *
-   * @param {T} a - The first value to compare.
-   * @param {T} b - The second value to compare.
-   * @returns {number} 0 if equal, -1 if a < b, 1 if a > b.
+   * @param {T} _a - The first value to compare.
+   * @param {T} _b - The second value to compare.
+   * @returns {number} 0 if equal, -1 if _a < _b, 1 if _a > _b.
    */
-  defaultCompare(a: T, b: T): number {
-    if (a === b) return 0;
-    if (a < b) return -1;
+  defaultCompare(_a: T, _b: T): number {
+    if (_a === _b) return 0;
+    if (_a < _b) return -1;
     return 1;
   }
 
   /**
    * Checks whether two values are considered equal by the comparator.
    *
-   * @param {T} a - The first value to compare.
-   * @param {T} b - The second value to compare.
+   * @param {T} _a - The first value to compare.
+   * @param {T} _b - The second value to compare.
    * @returns {boolean} Returns `true` if comparator returns 0 (meaning equal).
    */
-  equal(a: T, b: T): boolean {
-    return this.compare(a, b) === 0;
+  equal(_a: T, _b: T): boolean {
+    return this.compare(_a, _b) === 0;
   }
 
   /**
    * Checks if the first value is less than the second value.
    *
-   * @param {T} a - The first value to compare.
-   * @param {T} b - The second value to compare.
-   * @returns {boolean} True if `a` is less than `b`, otherwise false.
+   * @param {T} _a - The first value to compare.
+   * @param {T} _b - The second value to compare.
+   * @returns {boolean} True if `_a` is less than `_b`, otherwise false.
    */
-  lessThan(a: T, b: T): boolean {
-    return this.compare(a, b) < 0;
+  lessThan(_a: T, _b: T): boolean {
+    return this.compare(_a, _b) < 0;
   }
 
   /**
    * Checks if the first value is greater than the second value.
    *
-   * @param {T} a - The first value to compare.
-   * @param {T} b - The second value to compare.
-   * @returns {boolean} True if `a` is greater than `b`, otherwise false.
+   * @param {T} _a - The first value to compare.
+   * @param {T} _b - The second value to compare.
+   * @returns {boolean} True if `_a` is greater than `_b`, otherwise false.
    */
-  greaterThan(a: T, b: T): boolean {
-    return this.compare(a, b) > 0;
+  greaterThan(_a: T, _b: T): boolean {
+    return this.compare(_a, _b) > 0;
   }
 
   /**
    * Checks if the first value is less than or equal to the second value.
    *
-   * @param {T} a - The first value to compare.
-   * @param {T} b - The second value to compare.
-   * @returns {boolean} True if `a` is less than or equal to `b`, otherwise false.
+   * @param {T} _a - The first value to compare.
+   * @param {T} _b - The second value to compare.
+   * @returns {boolean} True if `_a` is less than or equal to `_b`, otherwise false.
    */
-  lessThanOrEqual(a: T, b: T): boolean {
-    return this.compare(a, b) <= 0;
+  lessThanOrEqual(_a: T, _b: T): boolean {
+    return this.compare(_a, _b) <= 0;
   }
 
   /**
    * Checks if the first value is greater than or equal to the second value.
    *
-   * @param {T} a - The first value to compare.
-   * @param {T} b - The second value to compare.
-   * @returns {boolean} True if `a` is greater than or equal to `b`, otherwise false.
+   * @param {T} _a - The first value to compare.
+   * @param {T} _b - The second value to compare.
+   * @returns {boolean} True if `_a` is greater than or equal to `_b`, otherwise false.
    */
-  greaterThanOrEqual(a: T, b: T): boolean {
-    return this.compare(a, b) >= 0;
+  greaterThanOrEqual(_a: T, _b: T): boolean {
+    return this.compare(_a, _b) >= 0;
   }
 
   /**
@@ -98,6 +98,6 @@ export default class Comparator<T extends string | number> {
    */
   reverse(): void {
     const originalCompare = this.compare;
-    this.compare = (a: T, b: T) => originalCompare(b, a);
+    this.compare = (_a: T, _b: T) => originalCompare(_b, _a);
   }
 }
